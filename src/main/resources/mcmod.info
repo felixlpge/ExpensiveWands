@@ -1,0 +1,16 @@
+[
+{
+  "modid": "expensivewands",
+  "name": "Expensive Wands",
+  "description": "Expensive Wands, expensive but cool!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["felixlpge"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
