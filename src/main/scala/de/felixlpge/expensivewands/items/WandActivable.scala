@@ -9,8 +9,12 @@ import net.minecraft.world.World
 
 class WandActivable(capacity: java.lang.Integer, drawRF: java.lang.Integer) extends WandBase(capacity) {
 
-  def activate(item: ItemStack): Unit ={
-    NBTHelper.setBoolean(item, "active", true)
+  def activate(item: ItemStack): java.lang.Boolean ={
+    if (hasEnergy(item, drawRF)){
+      NBTHelper.setBoolean(item, "active", true)
+      return true
+    }
+    false
   }
 
   def deActivate(item: ItemStack): Unit ={
@@ -24,7 +28,6 @@ class WandActivable(capacity: java.lang.Integer, drawRF: java.lang.Integer) exte
   def toggleActive(item: ItemStack): java.lang.Boolean ={
     if (!isActive(item)){
       this.activate(item)
-      true
     }else{
       this.deActivate(item)
       false

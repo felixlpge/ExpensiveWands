@@ -22,9 +22,11 @@ object expensivewands {
 object RegistrationHandler{
 
   var wandWaterBreathing: WandPotionEffect = new WandPotionEffect("water_breathing", 50000, 20)
+  var wandFireResistance: WandPotionEffect = new WandPotionEffect("fire_resistance", 70000, 50)
   @SubscribeEvent
   def registerItems(event: RegistryEvent.Register[Item]): Unit = {
-    event.getRegistry.register(wandWaterBreathing)
+    event.getRegistry.registerAll(wandWaterBreathing, wandFireResistance)
     expensivewands.proxy.registerItemRenderer(wandWaterBreathing, 0, "wand_water_breathing")
+    expensivewands.proxy.registerItemRenderer(wandFireResistance, 0, "wand_fire_resistance")
   }
 }
