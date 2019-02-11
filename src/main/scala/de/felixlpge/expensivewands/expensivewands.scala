@@ -1,6 +1,6 @@
 package de.felixlpge.expensivewands
 
-import de.felixlpge.expensivewands.items.WandWaterBreathing
+import de.felixlpge.expensivewands.items.WandPotionEffect
 import de.felixlpge.expensivewands.proxy.CommonProxy
 import net.minecraft.item.{Item, ItemBlock}
 import net.minecraftforge.event.RegistryEvent
@@ -21,10 +21,10 @@ object expensivewands {
 @Mod.EventBusSubscriber(modid = expensivewands.MODID)
 object RegistrationHandler{
 
-  var wandWaterBreathing: WandWaterBreathing = new WandWaterBreathing
+  var wandWaterBreathing: WandPotionEffect = new WandPotionEffect("water_breathing", 50000, 20)
   @SubscribeEvent
   def registerItems(event: RegistryEvent.Register[Item]): Unit = {
     event.getRegistry.register(wandWaterBreathing)
-    expensivewands.proxy.registerItemRenderer(wandWaterBreathing, 0, "wandwaterbreathing")
+    expensivewands.proxy.registerItemRenderer(wandWaterBreathing, 0, "wand_water_breathing")
   }
 }

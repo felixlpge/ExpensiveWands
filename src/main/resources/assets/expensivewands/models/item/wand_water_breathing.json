@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "expensivewands:items/wandwaterbreathing"
+    "layer0": "expensivewands:items/wand_water_breathing"
   },
 
   "display": {

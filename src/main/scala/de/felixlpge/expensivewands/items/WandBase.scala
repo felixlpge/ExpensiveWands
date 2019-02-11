@@ -7,10 +7,6 @@ import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraftforge.energy.{CapabilityEnergy, IEnergyStorage}
-import net.minecraft.enchantment.Enchantment
-import net.minecraft.enchantment.EnchantmentHelper
-import net.minecraft.item.ItemStack
-import net.minecraft.util.math.MathHelper
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.common.capabilities.ICapabilityProvider
@@ -20,8 +16,9 @@ import net.minecraftforge.energy.CapabilityEnergy
   *  Used by all Wands
   *
   */
-class WandBase extends Item with IEnergyContainerItem {
+class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerItem {
   setCreativeTab(CreativeTabs.BREWING)
+  setMaxDamage(capacity)
 
   val TAG_ENERGY = "energy"
 
@@ -29,7 +26,8 @@ class WandBase extends Item with IEnergyContainerItem {
 
   override def getDurabilityForDisplay(container: ItemStack): Double = {
     //TODO Show detailed power
-    (this.getMaxEnergyStored(container) - this.getEnergyStored(container)) / this.getMaxEnergyStored(container)
+    //(this.getMaxEnergyStored(container) - this.getEnergyStored(container)) / this.getMaxEnergyStored(container)
+    capacity - getEnergyStored(container)
   }
 
   override def receiveEnergy(container: ItemStack, maxReceive: Int, simulate: Boolean): Int = {
@@ -52,9 +50,11 @@ class WandBase extends Item with IEnergyContainerItem {
     energyExtracted
   }
 
+  def hasEnergy(container: ItemStack, count: java.lang.Integer): java.lang.Boolean = getEnergyStored(container) > count
+
   override def getEnergyStored(container: ItemStack): Int = NBTHelper.getInt(container, TAG_ENERGY, 0)
 
-  override def getMaxEnergyStored(container: ItemStack): Int = 50000
+  override def getMaxEnergyStored(container: ItemStack): Int = capacity
 
   override def initCapabilities(stack: ItemStack, nbt: NBTTagCompound) = new CapabilityProviderEnergy[IEnergyStorage](new EnergyConversionStorage(this, stack), CapabilityEnergy.ENERGY, null)
 }
