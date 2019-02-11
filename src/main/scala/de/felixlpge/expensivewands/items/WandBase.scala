@@ -18,16 +18,15 @@ import net.minecraftforge.energy.CapabilityEnergy
   */
 class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerItem {
   setCreativeTab(CreativeTabs.BREWING)
-  setMaxDamage(capacity)
-
   val TAG_ENERGY = "energy"
 
   override def showDurabilityBar(itemStack: ItemStack) = true
 
+  //override def getMaxDamage: Int = capacity
+
   override def getDurabilityForDisplay(container: ItemStack): Double = {
     //TODO Show detailed power
-    //(this.getMaxEnergyStored(container) - this.getEnergyStored(container)) / this.getMaxEnergyStored(container)
-    capacity - getEnergyStored(container)
+    (this.getMaxEnergyStored(container) - this.getEnergyStored(container)) / this.getMaxEnergyStored(container)
   }
 
   override def receiveEnergy(container: ItemStack, maxReceive: Int, simulate: Boolean): Int = {

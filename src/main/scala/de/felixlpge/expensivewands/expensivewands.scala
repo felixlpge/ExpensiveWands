@@ -21,12 +21,14 @@ object expensivewands {
 @Mod.EventBusSubscriber(modid = expensivewands.MODID)
 object RegistrationHandler{
 
-  var wandWaterBreathing: WandPotionEffect = new WandPotionEffect("water_breathing", 50000, 20)
-  var wandFireResistance: WandPotionEffect = new WandPotionEffect("fire_resistance", 70000, 50)
+  var wandWaterBreathing: WandPotionEffect = new WandPotionEffect("water_breathing", 50000, 20, 5)
+  var wandFireResistance: WandPotionEffect = new WandPotionEffect("fire_resistance", 70000, 50, 5)
+  var wandSaturation: WandPotionEffect = new WandPotionEffect("saturation", 150000, 1, 1)
   @SubscribeEvent
   def registerItems(event: RegistryEvent.Register[Item]): Unit = {
-    event.getRegistry.registerAll(wandWaterBreathing, wandFireResistance)
+    event.getRegistry.registerAll(wandWaterBreathing, wandFireResistance, wandSaturation)
     expensivewands.proxy.registerItemRenderer(wandWaterBreathing, 0, "wand_water_breathing")
     expensivewands.proxy.registerItemRenderer(wandFireResistance, 0, "wand_fire_resistance")
+    expensivewands.proxy.registerItemRenderer(wandSaturation, 0, "wand_saturation")
   }
 }
