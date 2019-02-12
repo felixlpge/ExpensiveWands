@@ -25,8 +25,7 @@ class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerIt
   //override def getMaxDamage: Int = capacity
 
   override def getDurabilityForDisplay(container: ItemStack): Double = {
-    //TODO Show detailed power
-    (this.getMaxEnergyStored(container) - this.getEnergyStored(container)) / this.getMaxEnergyStored(container)
+    (this.getMaxEnergyStored(container).toDouble - this.getEnergyStored(container).toDouble) / this.getMaxEnergyStored(container).toDouble
   }
 
   override def receiveEnergy(container: ItemStack, maxReceive: Int, simulate: Boolean): Int = {
