@@ -1,3 +1,4 @@
 item.wand_water_breathing.name=Unterwasseratmungsstab
 item.wand_fire_resistance.name=Feuerresistenzstab
-item.saturation.name=Der Stab der den Hunger vergehen lässt
+item.wand_saturation.name=Der Stab der den Hunger vergehen lässt
+item.wand_solar.name=Solar Starb
