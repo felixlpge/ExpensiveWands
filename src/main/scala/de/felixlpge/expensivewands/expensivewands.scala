@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 object expensivewands {
   final val MODID = "expensivewands"
   final val VERSION = "0.1"
+  final val debug = true
 
   import net.minecraftforge.fml.common.SidedProxy
 

@@ -3,6 +3,7 @@ package de.felixlpge.expensivewands.items
 import cofh.core.util.helpers.NBTHelper
 import cofh.redstoneflux.api.IEnergyContainerItem
 import de.felixlpge.expensivewands.capability.{CapabilityProviderEnergy, EnergyConversionStorage}
+import de.felixlpge.expensivewands.expensivewands
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -39,7 +40,7 @@ class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerIt
   override def extractEnergy(container: ItemStack, maxExtract: Int, simulate: Boolean): Int = {
     var energy = this.getEnergyStored(container)
     val energyExtracted = Math.min(energy, maxExtract)
-    if (!simulate) {
+    if (!simulate && !expensivewands.debug) {
       energy -= energyExtracted
       NBTHelper.setInt(container, TAG_ENERGY, energy)
     }
@@ -48,7 +49,12 @@ class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerIt
 
   def hasEnergy(container: ItemStack, count: java.lang.Integer): java.lang.Boolean = getEnergyStored(container) > count
 
-  override def getEnergyStored(container: ItemStack): Int = NBTHelper.getInt(container, TAG_ENERGY, 0)
+  override def getEnergyStored(container: ItemStack): Int = {
+    if (expensivewands.debug){
+      return getMaxEnergyStored(container)
+    }
+    NBTHelper.getInt(container, TAG_ENERGY, 0)
+  }
 
   override def getMaxEnergyStored(container: ItemStack): Int = capacity
 
