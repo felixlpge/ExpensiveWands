@@ -12,7 +12,6 @@ class TimeChanger(time: java.lang.Long, worldIn: net.minecraft.world.World) exte
       Thread.sleep(10)
       if (i >= 23500) i = 0
       i += 40
-      println(i)
     }
   }
 }

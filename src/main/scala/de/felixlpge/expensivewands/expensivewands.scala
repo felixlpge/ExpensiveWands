@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 object expensivewands {
   final val MODID = "expensivewands"
   final val VERSION = "0.1"
-  final val debug = true
+  final val debug = false
 
   import net.minecraftforge.fml.common.SidedProxy
 
@@ -26,13 +26,15 @@ object RegistrationHandler{
   var wandFireResistance: WandPotionEffect = new WandPotionEffect("fire_resistance", 70000, 50, 5)
   var wandSaturation: WandPotionEffect = new WandPotionEffect("saturation", 150000, 1, 1)
 
-  var wandSolar: WandTime = new WandTime(1000.toLong, "solar")
+  var wandSolar: WandTime = new WandTime(6000.toLong, "solar")
+  var wandLuna: WandTime = new WandTime(18000.toLong, "luna")
   @SubscribeEvent
   def registerItems(event: RegistryEvent.Register[Item]): Unit = {
-    event.getRegistry.registerAll(wandWaterBreathing, wandFireResistance, wandSaturation, wandSolar)
+    event.getRegistry.registerAll(wandWaterBreathing, wandFireResistance, wandSaturation, wandSolar, wandLuna)
     expensivewands.proxy.registerItemRenderer(wandWaterBreathing, 0, "wand_water_breathing")
     expensivewands.proxy.registerItemRenderer(wandFireResistance, 0, "wand_fire_resistance")
     expensivewands.proxy.registerItemRenderer(wandSaturation, 0, "wand_saturation")
     expensivewands.proxy.registerItemRenderer(wandSolar, 0, "wand_solar")
+    expensivewands.proxy.registerItemRenderer(wandLuna, 0, "wand_luna")
   }
 }
