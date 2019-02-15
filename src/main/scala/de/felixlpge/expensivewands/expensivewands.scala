@@ -1,5 +1,6 @@
 package de.felixlpge.expensivewands
 
+import de.felixlpge.expensivewands.items.special.WandRocket
 import de.felixlpge.expensivewands.items.{WandPotionEffect, WandTime}
 import de.felixlpge.expensivewands.proxy.CommonProxy
 import net.minecraft.item.{Item, ItemBlock}
@@ -28,13 +29,15 @@ object RegistrationHandler{
 
   var wandSolar: WandTime = new WandTime(6000.toLong, "solar")
   var wandLuna: WandTime = new WandTime(18000.toLong, "luna")
+  var wandRocket: WandRocket = new WandRocket
   @SubscribeEvent
   def registerItems(event: RegistryEvent.Register[Item]): Unit = {
-    event.getRegistry.registerAll(wandWaterBreathing, wandFireResistance, wandSaturation, wandSolar, wandLuna)
+    event.getRegistry.registerAll(wandWaterBreathing, wandFireResistance, wandSaturation, wandSolar, wandLuna, wandRocket)
     expensivewands.proxy.registerItemRenderer(wandWaterBreathing, 0, "wand_water_breathing")
     expensivewands.proxy.registerItemRenderer(wandFireResistance, 0, "wand_fire_resistance")
     expensivewands.proxy.registerItemRenderer(wandSaturation, 0, "wand_saturation")
     expensivewands.proxy.registerItemRenderer(wandSolar, 0, "wand_solar")
     expensivewands.proxy.registerItemRenderer(wandLuna, 0, "wand_luna")
+    expensivewands.proxy.registerItemRenderer(wandRocket, 0, "wand_rocket")
   }
 }
