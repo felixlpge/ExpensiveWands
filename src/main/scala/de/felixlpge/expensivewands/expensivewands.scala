@@ -1,11 +1,14 @@
 package de.felixlpge.expensivewands
 
+import de.felixlpge.expensivewands.crafting.WandCraftingRecipies
 import de.felixlpge.expensivewands.items.special.WandRocket
 import de.felixlpge.expensivewands.items.{WandPotionEffect, WandTime}
 import de.felixlpge.expensivewands.proxy.CommonProxy
 import net.minecraft.item.{Item, ItemBlock}
 import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.fml.common.Mod
+import net.minecraftforge.fml.common.Mod.EventHandler
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Mod(modid = expensivewands.MODID, version = expensivewands.VERSION, modLanguage = "scala", name = "Expensive Wands")
@@ -18,6 +21,11 @@ object expensivewands {
 
   @SidedProxy(serverSide = "de.felixlpge.expensivewands.proxy.CommonProxy", clientSide = "de.felixlpge.expensivewands.proxy.ClientProxy")
   var proxy: CommonProxy = _
+
+  @EventHandler
+  def preInit(event: FMLPreInitializationEvent): Unit ={
+    WandCraftingRecipies.addDefaultRecipies()
+  }
 
 }
 @Mod.EventBusSubscriber(modid = expensivewands.MODID)
