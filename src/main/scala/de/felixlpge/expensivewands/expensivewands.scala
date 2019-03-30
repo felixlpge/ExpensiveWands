@@ -6,6 +6,7 @@ import de.felixlpge.expensivewands.items.special.WandRocket
 import de.felixlpge.expensivewands.items.{WandAltar, WandPotionEffect, WandTime}
 import de.felixlpge.expensivewands.proxy.CommonProxy
 import net.minecraft.block.Block
+import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.{Item, ItemBlock}
 import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.fml.common.Mod
@@ -48,6 +49,9 @@ object RegistrationHandler{
   //Different wand
   var wandSolar: WandTime = new WandTime(6000.toLong, "solar")
   var wandLuna: WandTime = new WandTime(18000.toLong, "luna")
+  //TODO Add Weather (Thunder, clear)
+  //TODO (Portable) Ender Chest
+  //TODO Lighthning (Click, 10 sec, strike)
   var wandRocket: WandRocket = new WandRocket
   //Crafting wands
   var wandCraftingI: WandAltar = new WandAltar(10001, 0, "I")
@@ -55,12 +59,18 @@ object RegistrationHandler{
   var wandCraftingIII: WandAltar = new WandAltar(150001, 2, "III")
   var wandCraftingIV: WandAltar = new WandAltar(500001, 3,"IV")
   var wandCraftingV: WandAltar = new WandAltar(1000001, 4, "V")
+  //Mob wands
+  //Creative tab
+  var creativeTab: ExpensiveWandsCreativeTab = new ExpensiveWandsCreativeTab
 
   @SubscribeEvent
   def registerItems(event: RegistryEvent.Register[Item]): Unit = {
-    event.getRegistry.registerAll(wandWaterBreathing, wandFireResistance, wandSaturation,
-      wandSolar, wandLuna, wandRocket, blockPressItem,
-      wandCraftingI, wandCraftingII, wandCraftingIII, wandCraftingIV, wandCraftingV)
+    // Set extra settings
+    blockPressItem.setMaxStackSize(1)
+    //register
+    event.getRegistry.registerAll(blockPressItem, wandCraftingI, wandCraftingII, wandCraftingIII, wandCraftingIV, wandCraftingV,
+      wandWaterBreathing, wandFireResistance, wandSaturation,
+      wandSolar, wandLuna, wandRocket)
     expensivewands.proxy.registerItemRenderer(wandWaterBreathing, 0, "wand_water_breathing")
     expensivewands.proxy.registerItemRenderer(wandFireResistance, 0, "wand_fire_resistance")
     expensivewands.proxy.registerItemRenderer(wandSaturation, 0, "wand_saturation")

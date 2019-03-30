@@ -11,15 +11,15 @@ class WandCraftingRecipe(out: Item,in: Array[Item], tier: java.lang.Integer, pow
   def getPowerUse: java.lang.Integer = powerUse
 
   def doItemsMatch(items: Array[Item]) : java.lang.Boolean = {
-    var needed = util.Arrays.asList(getInput)
+    var needed: List[Item] = getInput.toList
     for (item <- items){
       if (needed.contains(item)){
-        needed.remove(item)
+        needed = needed.filter(_ != item)
       }else{
         return false
       }
     }
-    if (needed.size() > 0){
+    if (needed.nonEmpty){
       return false
     }
     true

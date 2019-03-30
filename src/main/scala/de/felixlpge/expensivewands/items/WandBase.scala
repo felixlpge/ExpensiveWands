@@ -3,7 +3,7 @@ package de.felixlpge.expensivewands.items
 import cofh.core.util.helpers.NBTHelper
 import cofh.redstoneflux.api.IEnergyContainerItem
 import de.felixlpge.expensivewands.capability.{CapabilityProviderEnergy, EnergyConversionStorage}
-import de.felixlpge.expensivewands.expensivewands
+import de.felixlpge.expensivewands.{RegistrationHandler, expensivewands}
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -19,6 +19,7 @@ import net.minecraftforge.energy.CapabilityEnergy
   */
 class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerItem {
   setCreativeTab(CreativeTabs.BREWING)
+  setMaxStackSize(1)
   val TAG_ENERGY = "energy"
 
   override def showDurabilityBar(itemStack: ItemStack) = true

@@ -10,3 +10,4 @@ item.wand_crafting_III.name=Erweiterter Herstellungsstab
 item.wand_crafting_IV.name=Elite Herstellungsstab
 item.wand_crafting_V.name=Super Herstellungsstab
 tile.press.name=Herstellungspresse
+itemGroup.expensivewands=Teure Stäbe (HIER ZU BEKOMMEN, GRATIS)

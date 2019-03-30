@@ -5,6 +5,7 @@ import net.minecraft.entity.{Entity, MoverType}
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.potion.{Potion, PotionEffect}
+import net.minecraft.util.{ActionResult, EnumHand}
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 
@@ -12,6 +13,10 @@ class WandRocket extends WandActivable(1000000, 250){
   setUnlocalizedName("wand_rocket")
   setRegistryName("wand_rocket")
 
+  override def onItemRightClick(worldIn: World, playerIn: EntityPlayer, handIn: EnumHand): ActionResult[ItemStack] = {
+    playerIn.fallDistance = 0
+    super.onItemRightClick(worldIn, playerIn, handIn)
+  }
 
   override def onUpdate(stack: ItemStack, worldIn: World, entityIn: Entity, itemSlot: Int, isSelected: Boolean): Unit = {
     if (isActive(stack)){
