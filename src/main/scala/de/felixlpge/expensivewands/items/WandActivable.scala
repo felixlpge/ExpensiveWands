@@ -44,7 +44,7 @@ class WandActivable(capacity: java.lang.Integer, drawRF: java.lang.Integer) exte
   }
 
   override def onItemRightClick(worldIn: World, playerIn: EntityPlayer, handIn: EnumHand): ActionResult[ItemStack] = {
-    if (!worldIn.isRemote && !playerIn.getHeldItem(handIn).isEmpty){
+    if (!worldIn.isRemote && !playerIn.getHeldItem(handIn).isEmpty && !playerIn.isSneaking){
       toggleActive(playerIn.getHeldItem(handIn))
     }
     super.onItemRightClick(worldIn, playerIn, handIn)

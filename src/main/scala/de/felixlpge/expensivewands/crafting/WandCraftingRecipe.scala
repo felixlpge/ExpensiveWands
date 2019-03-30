@@ -10,7 +10,7 @@ class WandCraftingRecipe(out: Item,in: Array[Item], tier: java.lang.Integer, pow
   def getNeededTier: java.lang.Integer = tier
   def getPowerUse: java.lang.Integer = powerUse
 
-  def doItemsMatch(items: Array[Item]) : Boolean = {
+  def doItemsMatch(items: Array[Item]) : java.lang.Boolean = {
     var needed = util.Arrays.asList(getInput)
     for (item <- items){
       if (needed.contains(item)){
@@ -25,6 +25,6 @@ class WandCraftingRecipe(out: Item,in: Array[Item], tier: java.lang.Integer, pow
     true
   }
 
-  def doTierMatch(tier: Int): Unit = tier >= getNeededTier
+  def doTierMatch(tier: Int): java.lang.Boolean = tier >= getNeededTier
 
 }

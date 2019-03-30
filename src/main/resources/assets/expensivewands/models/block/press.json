@@ -1,16 +1,16 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "expensivewands:blocks/press/wood",
-		"1": "expensivewands:blocks/press/stone",
-		"2": "expensivewands:blocks/press/metal",
-		"particle": "expensivewands:blocks/press/wood"
+		"0": "minecraft:blocks/planks_oak",
+		"1": "minecraft:blocks/brick",
+		"2": "minecraft:blocks/iron_block",
+		"particle": "minecraft:blocks/iron_block"
 	},
 	"elements": [
 		{
 			"name": "base",
 			"from": [0, 0, 0],
-			"to": [17, 5, 17],
+			"to": [16, 5, 16],
 			"faces": {
 				"north": {"uv": [0, 0, 16, 5], "texture": "#0"},
 				"east": {"uv": [0, 0, 16, 5], "texture": "#0"},

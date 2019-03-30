@@ -9,7 +9,7 @@ class WandTime(time: java.lang.Long, name: java.lang.String) extends WandBase(10
   setUnlocalizedName("wand_" + name)
   setRegistryName("wand_" + name)
   override def onItemRightClick(worldIn: World, playerIn: EntityPlayer, handIn: EnumHand): ActionResult[ItemStack] = {
-    if (!playerIn.getHeldItem(handIn).isEmpty){
+    if (!playerIn.getHeldItem(handIn).isEmpty && !playerIn.isSneaking){
       if (hasEnergy(playerIn.getHeldItem(handIn), 100000)){
         extractEnergy(playerIn.getHeldItem(handIn), 100000, simulate = false)
         new Thread(new TimeChanger(time, worldIn)).start()

@@ -1,7 +1,12 @@
-item.wand_water_breathing.name=Unterwasseratmungsstab
-item.wand_fire_resistance.name=Feuerresistenzstab
+item.wand_water_breathing.name=Keine Luft unter Wasser holen müssen Stab
+item.wand_fire_resistance.name=Feuer tut nicht weh Stab
 item.wand_saturation.name=Der Stab der den Hunger vergehen lässt
-item.wand_solar.name=Solar Starb
-item.wand_luna.name=Der Mond ist aufgegangen
+item.wand_solar.name=Es werde Licht Stab
+item.wand_luna.name=Der Mond ist aufgegangen (Stab)
 item.wand_rocket.name=Raketenstab
-tile.press.name=Presse
+item.wand_crafting_I.name=Einfacher Herstellungsstab
+item.wand_crafting_II.name=Normaler Herstellungsstab
+item.wand_crafting_III.name=Erweiterter Herstellungsstab
+item.wand_crafting_IV.name=Elite Herstellungsstab
+item.wand_crafting_V.name=Super Herstellungsstab
+tile.press.name=Herstellungspresse
