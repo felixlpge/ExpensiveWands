@@ -18,7 +18,7 @@ import net.minecraftforge.energy.CapabilityEnergy
   *
   */
 class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerItem {
-  setCreativeTab(CreativeTabs.BREWING)
+  setCreativeTab(expensivewands.creativeTab)
   setMaxStackSize(1)
   val TAG_ENERGY = "energy"
 

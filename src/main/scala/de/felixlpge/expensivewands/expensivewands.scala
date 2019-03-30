@@ -5,9 +5,10 @@ import de.felixlpge.expensivewands.crafting.WandCraftingRecipies
 import de.felixlpge.expensivewands.items.special.WandRocket
 import de.felixlpge.expensivewands.items.{WandAltar, WandPotionEffect, WandTime}
 import de.felixlpge.expensivewands.proxy.CommonProxy
+import mezz.jei.api.{IModRegistry, JEIPlugin}
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.item.{Item, ItemBlock}
+import net.minecraft.item.{Item, ItemBlock, ItemStack}
 import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
@@ -20,6 +21,11 @@ object expensivewands {
   final val MODID = "expensivewands"
   final val VERSION = "0.1"
   final val debug = false
+
+  //Creative tab
+  var creativeTab: CreativeTabs = new CreativeTabs(MODID) {
+    override def getTabIconItem: ItemStack = new ItemStack(RegistrationHandler.wandSolar)
+  }
 
   import net.minecraftforge.fml.common.SidedProxy
 
@@ -60,13 +66,13 @@ object RegistrationHandler{
   var wandCraftingIV: WandAltar = new WandAltar(500001, 3,"IV")
   var wandCraftingV: WandAltar = new WandAltar(1000001, 4, "V")
   //Mob wands
-  //Creative tab
-  var creativeTab: ExpensiveWandsCreativeTab = new ExpensiveWandsCreativeTab
+
 
   @SubscribeEvent
   def registerItems(event: RegistryEvent.Register[Item]): Unit = {
     // Set extra settings
     blockPressItem.setMaxStackSize(1)
+    blockPressItem.setCreativeTab(expensivewands.creativeTab)
     //register
     event.getRegistry.registerAll(blockPressItem, wandCraftingI, wandCraftingII, wandCraftingIII, wandCraftingIV, wandCraftingV,
       wandWaterBreathing, wandFireResistance, wandSaturation,
@@ -90,4 +96,5 @@ object RegistrationHandler{
   def registerBlocks(event: RegistryEvent.Register[Block]): Unit = {
     event.getRegistry.register(blockPress)
   }
+
 }
