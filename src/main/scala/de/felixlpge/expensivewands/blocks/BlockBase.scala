@@ -9,7 +9,6 @@ class BlockBase(material: Material) extends Block(material){
   def createItemBlock: ItemBlock = {
     var item = new ItemBlock(this)
     item.setRegistryName(getRegistryName)
-    item.setCreativeTab(expensivewands.creativeTab)
     item
   }
 }

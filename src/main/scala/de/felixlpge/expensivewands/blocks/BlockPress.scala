@@ -3,7 +3,7 @@ package de.felixlpge.expensivewands.blocks
 import java.util.Random
 
 import cofh.core.util.helpers.WrenchHelper
-import de.felixlpge.expensivewands.RegistrationHandler
+import de.felixlpge.expensivewands.{RegistrationHandler, expensivewands}
 import net.minecraft.block.Block
 import net.minecraft.block.material.Material
 import net.minecraft.block.state.IBlockState
@@ -21,6 +21,7 @@ class BlockPress extends BlockBase(Material.ANVIL){
   setUnlocalizedName("press")
   setHardness(0.6F)
   setHarvestLevel("pickaxe", 3)
+  setCreativeTab(expensivewands.creativeTab)
 
   override def createTileEntity(world: World, state: IBlockState): TileEntity = {
     super.createTileEntity(world, state)
