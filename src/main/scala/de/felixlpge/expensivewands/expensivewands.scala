@@ -2,7 +2,7 @@ package de.felixlpge.expensivewands
 
 import de.felixlpge.expensivewands.blocks.{BlockPress, TileEntityBlockPress}
 import de.felixlpge.expensivewands.crafting.WandCraftingRecipies
-import de.felixlpge.expensivewands.items.special.WandRocket
+import de.felixlpge.expensivewands.items.special.{WandNoFallDamage, WandRocket}
 import de.felixlpge.expensivewands.items.{WandAltar, WandPotionEffect, WandTime}
 import de.felixlpge.expensivewands.proxy.CommonProxy
 import mezz.jei.api.{IModRegistry, JEIPlugin}
@@ -55,6 +55,7 @@ object RegistrationHandler{
   //Different wand
   var wandSolar: WandTime = new WandTime(6000.toLong, "solar")
   var wandLuna: WandTime = new WandTime(18000.toLong, "luna")
+  var wandNoFall: WandNoFallDamage = new WandNoFallDamage
   //TODO Add Weather (Thunder, clear)
   //TODO (Portable) Ender Chest
   //TODO Lighthning (Click, 10 sec, strike)
@@ -76,7 +77,7 @@ object RegistrationHandler{
     //register
     event.getRegistry.registerAll(blockPressItem, wandCraftingI, wandCraftingII, wandCraftingIII, wandCraftingIV, wandCraftingV,
       wandWaterBreathing, wandFireResistance, wandSaturation,
-      wandSolar, wandLuna, wandRocket)
+      wandSolar, wandLuna, wandRocket, wandNoFall)
     expensivewands.proxy.registerItemRenderer(wandWaterBreathing, 0, "wand_water_breathing")
     expensivewands.proxy.registerItemRenderer(wandFireResistance, 0, "wand_fire_resistance")
     expensivewands.proxy.registerItemRenderer(wandSaturation, 0, "wand_saturation")
@@ -89,6 +90,7 @@ object RegistrationHandler{
     expensivewands.proxy.registerItemRenderer(wandCraftingIII, 0, "wand_crafting_III")
     expensivewands.proxy.registerItemRenderer(wandCraftingIV, 0, "wand_crafting_IV")
     expensivewands.proxy.registerItemRenderer(wandCraftingV, 0, "wand_crafting_V")
+    expensivewands.proxy.registerItemRenderer(wandNoFall, 0, "wand_no_fall")
 
   }
 

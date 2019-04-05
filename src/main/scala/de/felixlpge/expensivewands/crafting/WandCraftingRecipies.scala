@@ -36,6 +36,7 @@ object WandCraftingRecipies {
     addRecipe(new WandCraftingRecipe(RegistrationHandler.wandCraftingII, Array(RegistrationHandler.wandCraftingI, Items.GOLD_INGOT), 0, 1000))
     //Tier 1 Recipes (can draw 50k)
     addRecipe(new WandCraftingRecipe(RegistrationHandler.wandSaturation, Array(Items.STICK, Items.FISHING_ROD, Items.FISH, Items.COOKED_BEEF, Items.COOKED_CHICKEN, Items.COOKED_PORKCHOP, Items.BAKED_POTATO), 1, 10000))
+    addRecipe(new WandCraftingRecipe(RegistrationHandler.wandNoFall, Array(Items.STICK, Items.FEATHER, Items.GLASS_BOTTLE, Items.STRING), 1, 45000))
     addRecipe(new WandCraftingRecipe(RegistrationHandler.wandFireResistance, Array(Items.STICK, Items.LAVA_BUCKET, Items.IRON_CHESTPLATE, Items.BREWING_STAND), 1, 400000))
     addRecipe(new WandCraftingRecipe(RegistrationHandler.wandCraftingIII, Array(RegistrationHandler.wandCraftingII, Items.DIAMOND), 1, 50000))
     //Tier 2 Recipes (can draw 150k)

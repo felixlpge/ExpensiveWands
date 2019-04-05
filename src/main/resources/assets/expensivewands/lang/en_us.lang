@@ -9,5 +9,6 @@ item.wand_crafting_II.name=Crafting Wand
 item.wand_crafting_III.name=Advanced Crafting Wand
 item.wand_crafting_IV.name=Elite Crafting Wand
 item.wand_crafting_V.name=Super Crafting Wand
+item.wand_no_fall.name=Featherfalling Wand
 tile.press.name=Press
 itemGroup.expensivewands=Expensive Wands
