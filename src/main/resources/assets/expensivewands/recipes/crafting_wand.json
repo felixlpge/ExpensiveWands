@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "iii",
+    "isi",
+    " s "
+  ],
+  "key":
+  {
+    "i":
+    {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "s":
+    {
+      "item": "minecraft:stick"
+    }
+  },
+  "result":
+  {
+    "item": "expensivewands:wand_crafting_i",
+    "count": 1,
+    "data": 0
+  }
+}
