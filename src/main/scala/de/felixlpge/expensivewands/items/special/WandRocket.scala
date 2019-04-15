@@ -19,7 +19,7 @@ class WandRocket extends WandActivable(1000000, 250){
   }
 
   override def onUpdate(stack: ItemStack, worldIn: World, entityIn: Entity, itemSlot: Int, isSelected: Boolean): Unit = {
-    if (isActive(stack)){
+    if (isActive(stack) && worldIn.isRemote){
       entityIn match {
         case player: EntityPlayer =>
           val yaw = player.rotationYaw
