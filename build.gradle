@@ -47,7 +47,6 @@ minecraft {
 }
 
 dependencies {
-    compile "org.scala-lang:scala-library:2.12.4"
     compile "cofh:CoFHCore:1.12.2-4.6.+:deobf"
     compile "cofh:RedstoneFlux:1.12-2.1.+:deobf"
     // you may put jars on which you depend on in ./libs

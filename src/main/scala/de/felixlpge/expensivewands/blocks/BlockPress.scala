@@ -74,8 +74,8 @@ class BlockPress extends BlockBase(Material.ANVIL){
       val press = worldIn.getTileEntity(pos).asInstanceOf[TileEntityBlockPress]
       val items = press.getItemsInside()
       if (items.length > 0) {
-        for (item <- items) {
-          worldIn.spawnEntity(new EntityItem(worldIn, pos.getX, pos.getY, pos.getZ, item))
+        for (i <- items.indices) {
+          worldIn.spawnEntity(new EntityItem(worldIn, pos.getX, pos.getY, pos.getZ, items(i)))
         }
         press.clear()
       }

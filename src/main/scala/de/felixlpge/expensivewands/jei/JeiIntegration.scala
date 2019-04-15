@@ -10,11 +10,12 @@ import scala.collection.JavaConverters._
 @JEIPlugin
 class JeiIntegration extends IModPlugin{
   override def register(registry: IModRegistry): Unit = {
-    for (recipe <- WandCraftingRecipies.recipies) {
+    for (i <- WandCraftingRecipies.recipies.indices) {
+      val recipe = WandCraftingRecipies.recipies(i)
       var text = Array[String]()
       text :+= "expensivewands.crafting.press"
-      for (input <- recipe.getInput) {
-        text :+= input.getUnlocalizedName + ".name"
+      for (inputId <- recipe.getInput.indices) {
+        text :+= recipe.getInput(inputId).getUnlocalizedName + ".name"
       }
       text :+= "expensivewands.crafting.press2"
       text :+= recipe.getNeededWand
