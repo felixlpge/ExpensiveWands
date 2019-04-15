@@ -4,10 +4,14 @@ import cofh.core.util.helpers.NBTHelper
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
+import net.minecraft.util.math.MathHelper
 import net.minecraft.util.{ActionResult, EnumHand}
 import net.minecraft.world.World
 
 class WandActivable(capacity: java.lang.Integer, drawRF: java.lang.Integer) extends WandBase(capacity) {
+
+
+  override def getRGBDurabilityForDisplay(stack: ItemStack): Int = return MathHelper.hsvToRGB(Math.max(0.0F, (1.0F - getDurabilityForDisplay(stack)).toFloat) / (if (isActive(stack)) 50F else 3.0F), 1.0F, 1.0F)
 
   def activate(item: ItemStack): java.lang.Boolean ={
     if (hasEnergy(item, drawRF)){
