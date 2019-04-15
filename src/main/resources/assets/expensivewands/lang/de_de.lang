@@ -15,3 +15,5 @@ itemGroup.expensivewands=Teure Stäbe (GRATIS)
 expensivewands.crafting.press=Das Herstellen dieses Stabes ist nur möglich in dem die Items
 expensivewands.crafting.press2=in eine Presse legst und ein einen Shift-Rechtsklick mit einem
 expensivewands.crafting.press3=(oder besser) ausführst.
+expensivewands.recipe.not_enough_energy=Du besitzt nicht genug Energie.
+expensivewands.recipe.not_found=Dieses Rezept wurde nicht gefunden. Bitte überprüfe das Rezept und das Level deines Stabes

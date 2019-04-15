@@ -15,3 +15,5 @@ itemGroup.expensivewands=Expensive Wands
 expensivewands.crafting.press=The crafting of this wand is only possible by placing the items
 expensivewands.crafting.press2=in a press. Sneak and Rigthclick with a
 expensivewands.crafting.press3=(or a better one).
+expensivewands.recipe.not_enough_energy=There is not enough energy in your wand.
+expensivewands.recipe.not_found=This recipe could not be identified. Check the ingredients and the tier of your wand.

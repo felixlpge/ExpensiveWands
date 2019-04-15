@@ -7,6 +7,7 @@ import net.minecraft.entity.item.EntityItem
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.text.TextComponentTranslation
 import net.minecraft.util.{EnumActionResult, EnumFacing, EnumHand}
 import net.minecraft.world.World
 
@@ -18,14 +19,23 @@ class WandAltar(capacity: java.lang.Integer, tier: java.lang.Integer, name: java
     if (!worldIn.isRemote && !player.getHeldItem(hand).isEmpty && player.isSneaking ){
       val item = player.getHeldItem(hand)
       if (worldIn.getBlockState(pos).getBlock == RegistrationHandler.blockPress && worldIn.getTileEntity(pos) != null){
-        val tile = worldIn.getTileEntity(pos).asInstanceOf[TileEntityBlockPress]
-        val craftingRecipe = WandCraftingRecipies.findOverlappingRecipe(tile, tier)
-        if (craftingRecipe != null && hasEnergy(item, craftingRecipe.getPowerUse)) {
-          worldIn.spawnEntity(new EntityItem(worldIn, player.posX, player.posY, player.posZ, new ItemStack(craftingRecipe.getOutput)))
-          tile.clear()
-          extractEnergy(item, craftingRecipe.getPowerUse, simulate = false)
-          return EnumActionResult.SUCCESS
+        // Getting press inventory from world
+        val press = worldIn.getTileEntity(pos).asInstanceOf[TileEntityBlockPress]
+        // Searching for overlapping recipe
+        val craftingRecipe = WandCraftingRecipies.findOverlappingRecipe(press, tier)
+        // If not found show message
+        if (craftingRecipe != null ) {
+          if (hasEnergy(item, craftingRecipe.getPowerUse)) {
+            worldIn.spawnEntity(new EntityItem(worldIn, player.posX, player.posY, player.posZ, new ItemStack(craftingRecipe.getOutput)))
+            press.clear()
+            extractEnergy(item, craftingRecipe.getPowerUse, simulate = false)
+            return EnumActionResult.SUCCESS
+          }else {
+            player.sendStatusMessage(new TextComponentTranslation("expensivewands.recipe.not_enough_energy"), true)
+            return EnumActionResult.FAIL
+          }
         } else {
+          player.sendStatusMessage(new TextComponentTranslation("expensivewands.recipe.not_found"), true)
           return EnumActionResult.FAIL
         }
       }

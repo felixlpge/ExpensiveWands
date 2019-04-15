@@ -20,7 +20,7 @@ class BlockPress extends BlockBase(Material.ANVIL){
   setRegistryName("press")
   setUnlocalizedName("press")
   setHardness(0.6F)
-  setHarvestLevel("pickaxe", 3)
+  setHarvestLevel("pickaxe", 2)
   setCreativeTab(expensivewands.creativeTab)
 
   override def createTileEntity(world: World, state: IBlockState): TileEntity = {
@@ -43,15 +43,18 @@ class BlockPress extends BlockBase(Material.ANVIL){
   override def onBlockActivated(worldIn: World, pos: BlockPos, state: IBlockState, playerIn: EntityPlayer, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): Boolean = {
     val press = worldIn.getTileEntity(pos)
     val item = playerIn.getHeldItem(hand)
-    if (!worldIn.isRemote &&  press != null && !item.isEmpty  && !(item.getUnlocalizedName.contains("wand_crafting_") && playerIn.isSneaking)){
-      val press = worldIn.getTileEntity(pos).asInstanceOf[TileEntityBlockPress]
-      press.addItem(item)
-      if (!(playerIn.isCreative && !playerIn.isSneaking)) {
-        playerIn.setHeldItem(hand, new ItemStack(Items.AIR))
+    if (!worldIn.isRemote &&  press != null && (!item.isEmpty || playerIn.isSneaking)){
+      if (!playerIn.isSneaking) {
+        val press = worldIn.getTileEntity(pos).asInstanceOf[TileEntityBlockPress]
+        press.addItem(item)
+        if (!playerIn.isCreative) {
+          playerIn.setHeldItem(hand, new ItemStack(Items.AIR))
+        }
+      }else {
+        dropItemsInside(worldIn, pos)
       }
       return true
     }
-      dropItemsInside(worldIn, pos)
     false
   }
 
