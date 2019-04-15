@@ -12,3 +12,6 @@ item.wand_crafting_IV.name=Elite Herstellungsstab
 item.wand_crafting_V.name=Super Herstellungsstab
 tile.press.name=Herstellungspresse
 itemGroup.expensivewands=Teure Stäbe (GRATIS)
+expensivewands.crafting.press=Das Herstellen dieses Stabes ist nur möglich in dem die Items
+expensivewands.crafting.press2=in eine Presse legst und ein einen Shift-Rechtsklick mit einem
+expensivewands.crafting.press3=(oder besser) ausführst.

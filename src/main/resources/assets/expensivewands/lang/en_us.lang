@@ -12,3 +12,6 @@ item.wand_crafting_V.name=Super Crafting Wand
 item.wand_no_fall.name=Featherfalling Wand
 tile.press.name=Press
 itemGroup.expensivewands=Expensive Wands
+expensivewands.crafting.press=The crafting of this wand is only possible by placing the items
+expensivewands.crafting.press2=in a press. Sneak and Rigthclick with a
+expensivewands.crafting.press3=(or a better one).

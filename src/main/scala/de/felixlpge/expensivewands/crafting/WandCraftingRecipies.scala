@@ -7,7 +7,7 @@ import net.minecraft.item.Item
 
 object WandCraftingRecipies {
 
-  private var recipies: List[WandCraftingRecipe] = List[WandCraftingRecipe]()
+  private[expensivewands] var recipies: List[WandCraftingRecipe] = List[WandCraftingRecipe]()
 
   def addRecipe(wandCraftingRecipe: WandCraftingRecipe): Unit ={
     recipies ::= wandCraftingRecipe
@@ -27,6 +27,7 @@ object WandCraftingRecipies {
     }
     null
   }
+
 
 
 
@@ -50,6 +51,9 @@ object WandCraftingRecipies {
     addRecipe(new WandCraftingRecipe(RegistrationHandler.wandLuna, Array(Items.STICK, Items.FLOWER_POT, Items.BUCKET, Items.WATER_BUCKET, Items.NETHER_STAR), 4, 750000))
 
   }
+
+
+
 
 
 
