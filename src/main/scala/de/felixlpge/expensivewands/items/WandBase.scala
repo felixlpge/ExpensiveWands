@@ -3,18 +3,14 @@ package de.felixlpge.expensivewands.items
 import cofh.core.util.helpers.NBTHelper
 import cofh.redstoneflux.api.IEnergyContainerItem
 import de.felixlpge.expensivewands.capability.{CapabilityProviderEnergy, EnergyConversionStorage}
-import de.felixlpge.expensivewands.{RegistrationHandler, expensivewands}
-import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.item.Item
-import net.minecraft.item.ItemStack
-import net.minecraftforge.energy.{CapabilityEnergy, IEnergyStorage}
-import net.minecraft.item.ItemStack
+import de.felixlpge.expensivewands.expensivewands
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.nbt.NBTTagCompound
-import net.minecraftforge.common.capabilities.ICapabilityProvider
-import net.minecraftforge.energy.CapabilityEnergy
+import net.minecraftforge.energy.{CapabilityEnergy, IEnergyStorage}
+
 /**
   * Class Wand Base
-  *  Used by all Wands
+  * Used by all Wands
   *
   */
 class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerItem {
@@ -51,7 +47,7 @@ class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerIt
   def hasEnergy(container: ItemStack, count: java.lang.Integer): java.lang.Boolean = getEnergyStored(container) > count
 
   override def getEnergyStored(container: ItemStack): Int = {
-    if (expensivewands.debug){
+    if (expensivewands.debug) {
       return getMaxEnergyStored(container)
     }
     NBTHelper.getInt(container, TAG_ENERGY, 0)

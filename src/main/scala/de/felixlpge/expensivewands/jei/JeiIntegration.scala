@@ -1,14 +1,11 @@
 package de.felixlpge.expensivewands.jei
 
-import de.felixlpge.expensivewands.crafting.{WandCraftingRecipe, WandCraftingRecipies}
-import mezz.jei.api.ingredients.IModIngredientRegistration
-import mezz.jei.api.{IJeiHelpers, IJeiRuntime, IModPlugin, IModRegistry, JEIPlugin}
+import de.felixlpge.expensivewands.crafting.WandCraftingRecipies
+import mezz.jei.api.{IModPlugin, IModRegistry, JEIPlugin}
 import net.minecraft.item.ItemStack
 
-import scala.collection.JavaConverters._
-
 @JEIPlugin
-class JeiIntegration extends IModPlugin{
+class JeiIntegration extends IModPlugin {
   override def register(registry: IModRegistry): Unit = {
     for (i <- WandCraftingRecipies.recipies.indices) {
       val recipe = WandCraftingRecipies.recipies(i)
@@ -20,7 +17,7 @@ class JeiIntegration extends IModPlugin{
       text :+= "expensivewands.crafting.press2"
       text :+= recipe.getNeededWand
       text :+= "expensivewands.crafting.press3"
-      registry.addIngredientInfo(new ItemStack(recipe.getOutput), classOf[ItemStack], text : _*)
+      registry.addIngredientInfo(new ItemStack(recipe.getOutput), classOf[ItemStack], text: _*)
     }
   }
 }

@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 
-class WandNoFallDamage extends WandActivable(1000000, 2){
+class WandNoFallDamage extends WandActivable(1000000, 2) {
   setUnlocalizedName("wand_no_fall")
   setRegistryName("wand_no_fall")
 

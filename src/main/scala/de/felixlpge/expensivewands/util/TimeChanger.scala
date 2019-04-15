@@ -1,10 +1,10 @@
 package de.felixlpge.expensivewands.util
 
-class TimeChanger(time: java.lang.Long, worldIn: net.minecraft.world.World) extends Runnable{
+class TimeChanger(time: java.lang.Long, worldIn: net.minecraft.world.World) extends Runnable {
   override def run(): Unit = {
     var runTimeChange = true
     var i = worldIn.getWorldTime
-    while (runTimeChange){
+    while (runTimeChange) {
       if (i >= time && i <= time + 40) {
         runTimeChange = false
       }

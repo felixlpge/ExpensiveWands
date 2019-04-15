@@ -1,5 +1,7 @@
 {
   "variants": {
-    "normal": {"model":  "expensivewands:press"}
+    "normal": {
+      "model": "expensivewands:press"
+    }
   }
 }

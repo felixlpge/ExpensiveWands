@@ -18,13 +18,13 @@ class WandWeather(weather: String) extends WandBase(100000) {
           worldinfo.setThunderTime(0)
           worldinfo.setRaining(false)
           worldinfo.setThundering(false)
-        }else if (weather == "rain") {
+        } else if (weather == "rain") {
           worldinfo.setCleanWeatherTime(0)
           worldinfo.setRainTime(5000)
           worldinfo.setThunderTime(5000)
           worldinfo.setRaining(true)
           worldinfo.setThundering(false)
-        }else if (weather == "thunder") {
+        } else if (weather == "thunder") {
           worldinfo.setCleanWeatherTime(0)
           worldinfo.setRainTime(3000)
           worldinfo.setThunderTime(3000)

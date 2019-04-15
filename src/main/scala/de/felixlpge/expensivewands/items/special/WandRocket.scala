@@ -1,15 +1,14 @@
 package de.felixlpge.expensivewands.items.special
 
 import de.felixlpge.expensivewands.items.WandActivable
-import net.minecraft.entity.{Entity, MoverType}
+import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
-import net.minecraft.potion.{Potion, PotionEffect}
-import net.minecraft.util.{ActionResult, EnumHand}
 import net.minecraft.util.math.MathHelper
+import net.minecraft.util.{ActionResult, EnumHand}
 import net.minecraft.world.World
 
-class WandRocket extends WandActivable(1000000, 250){
+class WandRocket extends WandActivable(1000000, 250) {
   setUnlocalizedName("wand_rocket")
   setRegistryName("wand_rocket")
 
@@ -19,7 +18,7 @@ class WandRocket extends WandActivable(1000000, 250){
   }
 
   override def onUpdate(stack: ItemStack, worldIn: World, entityIn: Entity, itemSlot: Int, isSelected: Boolean): Unit = {
-    if (isActive(stack) && worldIn.isRemote){
+    if (isActive(stack) && worldIn.isRemote) {
       entityIn match {
         case player: EntityPlayer =>
           val yaw = player.rotationYaw

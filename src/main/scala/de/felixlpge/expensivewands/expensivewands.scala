@@ -5,7 +5,6 @@ import de.felixlpge.expensivewands.crafting.WandCraftingRecipies
 import de.felixlpge.expensivewands.items.special.{WandNoFallDamage, WandRocket}
 import de.felixlpge.expensivewands.items.{WandAltar, WandPotionEffect, WandTime}
 import de.felixlpge.expensivewands.proxy.CommonProxy
-import mezz.jei.api.{IModRegistry, JEIPlugin}
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.{Item, ItemBlock, ItemStack}
@@ -33,20 +32,21 @@ object expensivewands {
   var proxy: CommonProxy = _
 
   @EventHandler
-  def preInit(event: FMLPreInitializationEvent): Unit ={
+  def preInit(event: FMLPreInitializationEvent): Unit = {
     WandCraftingRecipies.addDefaultRecipies()
   }
 
   @EventHandler
-  def postInit(event: FMLPostInitializationEvent): Unit ={
+  def postInit(event: FMLPostInitializationEvent): Unit = {
     GameRegistry.registerTileEntity(classOf[TileEntityBlockPress], "expensivewands:tileEntityBlockPress")
   }
 
 }
+
 @Mod.EventBusSubscriber(modid = expensivewands.MODID)
-object RegistrationHandler{
+object RegistrationHandler {
   //Blocks
-  var blockPress : BlockPress = new BlockPress
+  var blockPress: BlockPress = new BlockPress
   var blockPressItem: ItemBlock = blockPress.createItemBlock
   //Wands Potion
   var wandWaterBreathing: WandPotionEffect = new WandPotionEffect("water_breathing", 50000, 20, 5)
@@ -59,12 +59,13 @@ object RegistrationHandler{
   //TODO Add Weather (Thunder, clear)
   //TODO (Portable) Ender Chest
   //TODO Lighthning (Click, 10 sec, strike)
+  //TODO Langsamer fallen Stab
   var wandRocket: WandRocket = new WandRocket
   //Crafting wands
   var wandCraftingI: WandAltar = new WandAltar(10001, 0, "I")
   var wandCraftingII: WandAltar = new WandAltar(50001, 1, "II")
   var wandCraftingIII: WandAltar = new WandAltar(150001, 2, "III")
-  var wandCraftingIV: WandAltar = new WandAltar(500001, 3,"IV")
+  var wandCraftingIV: WandAltar = new WandAltar(500001, 3, "IV")
   var wandCraftingV: WandAltar = new WandAltar(1000001, 4, "V")
   //Mob wands
 

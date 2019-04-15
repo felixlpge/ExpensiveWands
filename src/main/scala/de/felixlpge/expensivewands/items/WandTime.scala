@@ -1,4 +1,5 @@
 package de.felixlpge.expensivewands.items
+
 import de.felixlpge.expensivewands.util.TimeChanger
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -8,10 +9,11 @@ import net.minecraft.world.World
 class WandTime(time: java.lang.Long, name: java.lang.String) extends WandBase(1000000) {
   setUnlocalizedName("wand_" + name)
   setRegistryName("wand_" + name)
+
   override def onItemRightClick(worldIn: World, playerIn: EntityPlayer, handIn: EnumHand): ActionResult[ItemStack] = {
-    if (!playerIn.getHeldItem(handIn).isEmpty && !playerIn.isSneaking){
+    if (!playerIn.getHeldItem(handIn).isEmpty && !playerIn.isSneaking) {
       val cost = calculateDelta(worldIn.getWorldTime, time) * 10
-      if (hasEnergy(playerIn.getHeldItem(handIn), cost)){
+      if (hasEnergy(playerIn.getHeldItem(handIn), cost)) {
         extractEnergy(playerIn.getHeldItem(handIn), cost, simulate = false)
         new Thread(new TimeChanger(time, worldIn)).start()
       }

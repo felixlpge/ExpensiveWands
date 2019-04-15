@@ -1,19 +1,19 @@
 package de.felixlpge.expensivewands.crafting
 
+import de.felixlpge.expensivewands.RegistrationHandler
 import de.felixlpge.expensivewands.blocks.TileEntityBlockPress
-import de.felixlpge.expensivewands.{RegistrationHandler, expensivewands}
-import net.minecraft.init.{Blocks, Items}
+import net.minecraft.init.Items
 import net.minecraft.item.Item
 
 object WandCraftingRecipies {
 
   private[expensivewands] var recipies: List[WandCraftingRecipe] = List[WandCraftingRecipe]()
 
-  def addRecipe(wandCraftingRecipe: WandCraftingRecipe): Unit ={
+  def addRecipe(wandCraftingRecipe: WandCraftingRecipe): Unit = {
     recipies ::= wandCraftingRecipe
   }
 
-  def removeRecipe(wandCraftingRecipe: WandCraftingRecipe): Unit ={
+  def removeRecipe(wandCraftingRecipe: WandCraftingRecipe): Unit = {
     recipies = recipies.filter(!_.equals(wandCraftingRecipe))
   }
 
@@ -27,8 +27,6 @@ object WandCraftingRecipies {
     }
     null
   }
-
-
 
 
   private[expensivewands] def addDefaultRecipies(): Unit = {
@@ -51,10 +49,6 @@ object WandCraftingRecipies {
     addRecipe(new WandCraftingRecipe(RegistrationHandler.wandLuna, Array(Items.STICK, Items.FLOWER_POT, Items.BUCKET, Items.WATER_BUCKET, Items.NETHER_STAR), 4, 750000))
 
   }
-
-
-
-
 
 
 }

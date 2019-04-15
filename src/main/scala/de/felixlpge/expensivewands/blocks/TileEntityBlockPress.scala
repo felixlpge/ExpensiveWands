@@ -6,9 +6,9 @@ import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-class TileEntityBlockPress extends TileEntity{
+class TileEntityBlockPress extends TileEntity {
 
-  private var items: List[ItemStack]= List[ItemStack]()
+  private var items: List[ItemStack] = List[ItemStack]()
 
   def getItemsInside(): Array[ItemStack] = {
     items.toArray
@@ -18,7 +18,7 @@ class TileEntityBlockPress extends TileEntity{
     items = List[ItemStack]()
   }
 
-  def addItem(item: ItemStack): Unit ={
+  def addItem(item: ItemStack): Unit = {
     items ::= item
   }
 

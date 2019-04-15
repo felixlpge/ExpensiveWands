@@ -1,34 +1,27 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "ipi",
     "idi",
     "bpb"
   ],
-  "key":
-  {
-    "d":
-    {
+  "key": {
+    "d": {
       "type": "forge:ore_dict",
       "ore": "gemDiamond"
     },
-    "i":
-    {
+    "i": {
       "type": "forge:ore_dict",
       "ore": "ingotIron"
     },
-    "p":
-    {
+    "p": {
       "item": "minecraft:piston"
     },
-    "b":
-    {
+    "b": {
       "item": "minecraft:brick"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "expensivewands:press",
     "count": 1,
     "data": 0
