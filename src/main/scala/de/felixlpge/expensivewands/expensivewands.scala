@@ -15,10 +15,11 @@ import net.minecraftforge.fml.common.event.{FMLPostInitializationEvent, FMLPreIn
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.registry.GameRegistry
 
-@Mod(modid = expensivewands.MODID, version = expensivewands.VERSION, modLanguage = "scala", name = "Expensive Wands")
+@Mod(modid = expensivewands.MODID, version = expensivewands.VERSION, modLanguage = "scala", name = expensivewands.NAME)
 object expensivewands {
   final val MODID = "expensivewands"
   final val VERSION = "0.1"
+  final val NAME = "Expensive Wands"
   final val debug = false
 
   //Creative tab

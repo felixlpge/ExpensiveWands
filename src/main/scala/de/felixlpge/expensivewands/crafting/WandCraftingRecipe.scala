@@ -1,6 +1,7 @@
 package de.felixlpge.expensivewands.crafting
 
-import net.minecraft.item.Item
+import de.felixlpge.expensivewands.RegistrationHandler
+import net.minecraft.item.{Item, ItemStack}
 
 class WandCraftingRecipe(out: Item, in: Array[Item], tier: Int, powerUse: java.lang.Integer) {
   def getOutput: Item = out
@@ -38,6 +39,19 @@ class WandCraftingRecipe(out: Item, in: Array[Item], tier: Int, powerUse: java.l
       case _ => return "item.wand_crafting_V.name"
     }
     ""
+  }
+
+  def getItemWand: ItemStack = {
+    var stack: ItemStack = new ItemStack(RegistrationHandler.wandCraftingV)
+    tier match {
+      case 0 => stack = new ItemStack(RegistrationHandler.wandCraftingI)
+      case 1 => stack = new ItemStack(RegistrationHandler.wandCraftingII)
+      case 2 => stack = new ItemStack(RegistrationHandler.wandCraftingIII)
+      case 3 => stack = new ItemStack(RegistrationHandler.wandCraftingIV)
+      case 4 => stack = new ItemStack(RegistrationHandler.wandCraftingV)
+    }
+    RegistrationHandler.wandCraftingV.receiveEnergy(stack, getPowerUse, simulate = false)
+    stack
   }
 
 }
