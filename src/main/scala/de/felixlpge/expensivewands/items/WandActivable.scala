@@ -11,7 +11,7 @@ import net.minecraft.world.World
 class WandActivable(capacity: java.lang.Integer, drawRF: java.lang.Integer) extends WandBase(capacity) {
 
 
-  override def getRGBDurabilityForDisplay(stack: ItemStack): Int = return MathHelper.hsvToRGB(Math.max(0.0F, (1.0F - getDurabilityForDisplay(stack)).toFloat) / (if (isActive(stack)) 50F else 3.0F), 1.0F, 1.0F)
+  override def getRGBDurabilityForDisplay(stack: ItemStack): Int = return MathHelper.hsvToRGB(1.0F / (if (isActive(stack)) 20F else 3.0F), 1.0F, 1.0F)
 
   def activate(item: ItemStack): java.lang.Boolean = {
     if (hasEnergy(item, drawRF)) {
