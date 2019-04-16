@@ -18,6 +18,11 @@ class WandBase(capacity: java.lang.Integer) extends Item with IEnergyContainerIt
   setMaxStackSize(1)
   val TAG_ENERGY = "energy"
 
+
+  override def getHighlightTip(item: ItemStack, displayName: String): String = {
+    displayName + " (" + getEnergyStored(item) + "RF/" + getMaxEnergyStored(item) + "RF)"
+  }
+
   override def showDurabilityBar(itemStack: ItemStack) = true
 
   override def getDurabilityForDisplay(container: ItemStack): Double = {
