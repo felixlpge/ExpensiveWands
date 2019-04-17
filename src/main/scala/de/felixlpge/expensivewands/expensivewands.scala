@@ -53,6 +53,7 @@ object RegistrationHandler {
   var wandWaterBreathing: WandPotionEffect = new WandPotionEffect("water_breathing", 50000, 20, 5)
   var wandFireResistance: WandPotionEffect = new WandPotionEffect("fire_resistance", 70000, 50, 5)
   var wandSaturation: WandPotionEffect = new WandPotionEffect("saturation", 150000, 1, 1)
+  var wandSpeed: WandPotionEffect = new WandPotionEffect("speed", 100000, 30, 4)
   //Different wand
   var wandSolar: WandTime = new WandTime(6000.toLong, "solar")
   var wandLuna: WandTime = new WandTime(18000.toLong, "luna")
@@ -61,7 +62,8 @@ object RegistrationHandler {
   //TODO (Portable) Ender Chest
   //TODO Lighthning (Click, 10 sec, strike)
   //TODO Langsamer fallen Stab
-  var wandRocket: WandRocket = new WandRocket
+  var wandRocket: WandRocket = new WandRocket("rocket", 250, 0.4)
+  var wandFastRocket: WandRocket = new WandRocket("fast_rocket", 600, 1.3)
   //Crafting wands
   var wandCraftingI: WandAltar = new WandAltar(10001, 0, "I")
   var wandCraftingII: WandAltar = new WandAltar(50001, 1, "II")
@@ -78,14 +80,15 @@ object RegistrationHandler {
     blockPressItem.setCreativeTab(expensivewands.creativeTab)
     //register
     event.getRegistry.registerAll(blockPressItem, wandCraftingI, wandCraftingII, wandCraftingIII, wandCraftingIV, wandCraftingV,
-      wandWaterBreathing, wandFireResistance, wandSaturation,
-      wandSolar, wandLuna, wandRocket, wandNoFall)
+      wandSpeed, wandWaterBreathing, wandFireResistance, wandSaturation,
+      wandSolar, wandLuna, wandRocket, wandFastRocket, wandNoFall)
     expensivewands.proxy.registerItemRenderer(wandWaterBreathing, 0, "wand_water_breathing")
     expensivewands.proxy.registerItemRenderer(wandFireResistance, 0, "wand_fire_resistance")
     expensivewands.proxy.registerItemRenderer(wandSaturation, 0, "wand_saturation")
     expensivewands.proxy.registerItemRenderer(wandSolar, 0, "wand_solar")
     expensivewands.proxy.registerItemRenderer(wandLuna, 0, "wand_luna")
     expensivewands.proxy.registerItemRenderer(wandRocket, 0, "wand_rocket")
+    expensivewands.proxy.registerItemRenderer(wandFastRocket, 0, "wand_fast_rocket")
     expensivewands.proxy.registerItemRenderer(blockPressItem, 0, "block_press")
     expensivewands.proxy.registerItemRenderer(wandCraftingI, 0, "wand_crafting_I")
     expensivewands.proxy.registerItemRenderer(wandCraftingII, 0, "wand_crafting_II")
@@ -93,7 +96,7 @@ object RegistrationHandler {
     expensivewands.proxy.registerItemRenderer(wandCraftingIV, 0, "wand_crafting_IV")
     expensivewands.proxy.registerItemRenderer(wandCraftingV, 0, "wand_crafting_V")
     expensivewands.proxy.registerItemRenderer(wandNoFall, 0, "wand_no_fall")
-
+    expensivewands.proxy.registerItemRenderer(wandSpeed, 0, "wand_speed")
   }
 
   @SubscribeEvent
