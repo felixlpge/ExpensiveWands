@@ -8,7 +8,10 @@ import de.felixlpge.expensivewands.proxy.CommonProxy
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.{Item, ItemBlock, ItemStack}
-import net.minecraftforge.event.RegistryEvent
+import net.minecraft.world.storage.loot.{LootEntryItem, LootTableList}
+import net.minecraft.world.storage.loot.conditions.LootCondition
+import net.minecraft.world.storage.loot.functions.LootFunction
+import net.minecraftforge.event.{LootTableLoadEvent, RegistryEvent}
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.event.{FMLPostInitializationEvent, FMLPreInitializationEvent}
@@ -42,6 +45,31 @@ object expensivewands {
     GameRegistry.registerTileEntity(classOf[TileEntityBlockPress], "expensivewands:tileEntityBlockPress")
   }
 
+}
+
+@Mod.EventBusSubscriber(modid = expensivewands.MODID)
+object Handler {
+  @SubscribeEvent
+  def onLootTablesLoaded(event: LootTableLoadEvent): Unit = {
+    val pool1 = event.getTable.getPool("pool1")
+    if (pool1 != null) {
+      if (event.getName == LootTableList.CHESTS_VILLAGE_BLACKSMITH) {
+        pool1.addEntry(new LootEntryItem(RegistrationHandler.wandSpeed, 3, 0, new Array[LootFunction](0), new Array[LootCondition](0), "loottable:wandSpeed"))
+        pool1.addEntry(new LootEntryItem(RegistrationHandler.blockPressItem, 5, 0, new Array[LootFunction](0), new Array[LootCondition](0), "loottable:press"))
+      }
+      else if (event.getName == LootTableList.CHESTS_NETHER_BRIDGE) {
+        pool1.addEntry(new LootEntryItem(RegistrationHandler.wandFireResistance, 5, 0, new Array[LootFunction](0), new Array[LootCondition](0), "loottable:wandFireRessistance"))
+      }
+      else if (event.getName == LootTableList.CHESTS_END_CITY_TREASURE) {
+        pool1.addEntry(new LootEntryItem(RegistrationHandler.wandRocket, 3, 0, new Array[LootFunction](0), new Array[LootCondition](0), "loottable:wandRocket"))
+        pool1.addEntry(new LootEntryItem(RegistrationHandler.wandLuna, 1, 0, new Array[LootFunction](0), new Array[LootCondition](0), "loottable:wandLuna"))
+      }
+      else if (event.getName.toString.contains("chests")) {
+        pool1.addEntry(new LootEntryItem(RegistrationHandler.wandCraftingI, 6, 0, new Array[LootFunction](0), new Array[LootCondition](0), "loottable:craftingWand"))
+        pool1.addEntry(new LootEntryItem(RegistrationHandler.wandSaturation, 3, 0, new Array[LootFunction](0), new Array[LootCondition](0), "loottable:wandSaturation"))
+      }
+    }
+  }
 }
 
 @Mod.EventBusSubscriber(modid = expensivewands.MODID)
